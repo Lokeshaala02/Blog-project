@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Blog - Admin Panel</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Simple Blog - Admin Panel</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./admin.html">Posts</a></li>
+      </ul>
+    </nav>
+
+    <form id="addnewblog">
+      <h1>Update Blog</h1>
+      <input type="text" id="title" name="title" placeholder="title" />
+      <textarea
+        id="discription"
+        name="discription"
+        placeholder="desctipiton"
+      ></textarea>
+      <button type="submit" class="addpost">Update Post</button>
+    </form>
+
+    <footer>
+      <p>&copy; 2023 Simple Blog - Admin Panel</p>
+    </footer>
+
+    <script>
+      const addPost = document.querySelector(".addpost");
+      const title = document.querySelector("#title");
+      const discription = document.querySelector("#discription");
+      const addnewblog = document.querySelector("#addnewblog");
+      let url = new URL(window.location.href);
+      let id = url.searchParams.get("id");
+
+      fetch("http://localhost:3000/api/blogs/blog/" + id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          title.value = data.title;
+          discription.value = data.discription;
+        })
+        .catch((err) => console.log(err));
+
+      addnewblog.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = {
+          title: title.value,
+          discription: discription.value,
+          date: String(new Date()),
+        };
+        fetch("http://localhost:3000/api/blogs/blog/update/" + id, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            console.log(res);
+            window.location.href = "./blog.html";
+          })
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>

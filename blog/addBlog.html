@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Blog - Admin Panel</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Simple Blog - Admin Panel</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./admin.html">Posts</a></li>
+      </ul>
+    </nav>
+
+    <form id="addnewblog">
+      <h1>Add new Blog</h1>
+      <input type="text" id="title" name="title" placeholder="title" />
+      <textarea
+        id="discription"
+        name="discription"
+        placeholder="desctipiton"
+      ></textarea>
+      <button type="submit" class="addpost">Add Post</button>
+    </form>
+
+    <footer>
+      <p>&copy; 2023 Simple Blog - Admin Panel</p>
+    </footer>
+
+    <script>
+      const addPost = document.querySelector(".addpost");
+      const title = document.querySelector("#title");
+      const discription = document.querySelector("#discription");
+      const addnewblog = document.querySelector("#addnewblog");
+
+      addnewblog.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = {
+          title: title.value,
+          discription: discription.value,
+          date: String(new Date()),
+        };
+        fetch("http://localhost:3000/api/blogs/blog/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            console.log(res);
+            window.location.href = "./blog.html";
+          })
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>

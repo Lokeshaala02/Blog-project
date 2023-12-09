@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Blog - Login/Register</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Simple Blog</h1>
+    </header>
+
+    <nav id="nav"></nav>
+
+    <form id="loginForm" action="/login" method="post">
+      <h2>Login</h2>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        id="email"
+        required
+      />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="submit" value="Login" />
+    </form>
+
+    <footer>
+      <p>&copy; 2023 Simple Blog</p>
+    </footer>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/login.js"></script>
+  </body>
+</html>

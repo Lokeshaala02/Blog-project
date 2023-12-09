@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Blog - Admin Panel</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Simple Blog - Admin Panel</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./admin.html">Posts</a></li>
+      </ul>
+    </nav>
+    <a href="./addBlog.html" class="addPost">Add new Post</a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>date</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+      <tbody id="posts"></tbody>
+    </table>
+
+    <footer>
+      <p>&copy; 2023 Simple Blog - Admin Panel</p>
+    </footer>
+
+    <script>
+      function getPost() {
+        fetch("http://localhost:3000/api/blogs")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            let posts = document.querySelector("#posts");
+            posts.innerHTML = "";
+            data.forEach((post) => {
+              posts.innerHTML += `
+                    <tr>
+                        <td>${post.id}</td>
+                        <td>${post.title}</td>
+                        <td>${post.date}</td>
+                        <td>
+                            <button class="edit" data-id="${post.id}" onclick="EditBlog('${post._id}')">Edit</button>
+                            <button class="delete" data-id="${post.id}" onclick="DelBlog('${post._id}')">Delete</button>
+                        </td>
+                    </tr>
+                    `;
+            });
+          })
+          .catch((err) => console.log(err));
+      }
+
+      getPost();
+
+      function DelBlog(id) {
+        fetch(`http://localhost:3000/api/blogs/blog/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => {
+            console.log(res);
+            getPost();
+          })
+          .catch((err) => console.log(err));
+      }
+
+      function EditBlog(id) {
+        window.location.href = `./updateBlog.html?id=${id}`;
+      }
+    </script>
+  </body>
+</html>

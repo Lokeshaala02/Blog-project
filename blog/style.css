@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  /* margin: 20px; */
+}
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+nav {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+section {
+  margin-top: 20px;
+  padding: 20px;
+}
+article {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+form {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="email"] {
+  width: 250px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.admin-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+.admin-panel a {
+  display: block;
+  padding: 10px 20px;
+  margin: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.admin-panel a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.addPost {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+textarea {
+  width: 80%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  width: fit-content;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+tr{
+  border: 1px solid #ccc;
+}
+
+th, td{
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
